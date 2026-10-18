@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, inital-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Best Earphones and Headphones - Twilight Audio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,10 +28,11 @@
                         <li><a href="">About</a></li>
                         <li><a href="">Contact</a></li>
                         <li><a href="account.html">Account</a></li>
+                        <li><a href="admin-login.html">Admin Login</a></li>
                     </ul>
                 </nav>
-                <a href="cart.html">
-                    <img src="images/cart.png" width="30px" height="30px">
+                <a href="cart.html" class="cart-nav-link" aria-label="Shopping cart">
+                    <img src="images/cart.png" width="30px" height="30px" alt="Cart"><span data-cart-count class="cart-count-badge" hidden>0</span>
                 </a>
                 <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
             </div>
@@ -70,180 +71,7 @@
 
     <div class="small-container">
         <h2 class="title">Featured Products</h2>
-        <div class="row">
-            <div class="col-4">
-                <a href="product-detail.html">
-                    <img src="images/product-1.jpg">
-                    <h4>Shuoer S12</h4>
-                </a>
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <p>$149.00</p>
-            </div>
-            <div class="col-4">
-                <a href="product-detail.html">
-                    <img src="images/product-2.jpg">
-                    <h4>7HZ Eternal</h4>
-                </a>
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <p>$249.00</p>
-            </div>
-            <div class="col-4">
-                <a href="product-detail.html">
-                    <img src="images/product-3.jpg">
-                    <h4>Shozy Magma</h4>
-                </a>
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <p>$499.00</p>
-            </div>
-            <div class="col-4">
-                <a href="product-detail.html">
-                    <img src="images/product-4.jpg">
-                    <h4>Xenns Mangird Tea2</h4>
-                </a>
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <p>$349.99</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-4">
-                <a href="product-detail.html">
-                    <img src="images/product-5.jpg">
-                    <h4>MiM Audio Dark Magician</h4>
-                </a>
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <p>$599.00</p>
-            </div>
-            <div class="col-4">
-                <a href="product-detail.html">
-                    <img src="images/product-6.jpg">
-                    <h4>Blon BL-03</h4>
-                </a>
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <p>$25.00</p>
-            </div>
-            <div class="col-4">
-                <a href="product-detail.html">
-                    <img src="images/product-7.jpg">
-                    <h4>KINERA IDUN 2.0</h4>
-                </a>
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <p>$169.00</p>
-            </div>
-            <div class="col-4">
-                <a href="product-detail.html">
-                    <img src="images/product-8.jpg">
-                    <h4>KZ X Crinacle CRN (ZEX Pro)</h4>
-                </a>
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <p>$36.99</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-4">
-                <a href="product-detail.html">
-                    <img src="images/product-9.jpg">
-                    <h4>FiiO FH9</h4>
-                </a>
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <p>$599.99</p>
-            </div>
-            <div class="col-4">
-                <a href="product-detail.html">
-                    <img src="images/product-10.jpg">
-                    <h4>TFZ TEQUILA PRO</h4>
-                </a>
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <p>$179.00</p>
-            </div>
-            <div class="col-4">
-                <a href="product-detail.html">
-                    <img src="images/product-11.jpg">
-                    <h4>Tripowin Leá</h4>
-                </a>
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <p>$25.99</p>
-            </div>
-            <div class="col-4">
-                <a href="product-detail.html">
-                    <img src="images/product-12.jpg">
-                    <h4>CCA CRA</h4>
-                </a>
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <p>$15.00</p>
-            </div>
-        </div>
+        <div id="home-product-catalog" class="row product-catalog"></div>
     </div>
     <!--------- offer -------->
     <div class="offer">
@@ -256,7 +84,7 @@
                     <p>Exclusively Available on Twilight-Audio store</p>
                     <h1>THIEAUDIO Monarch</h1>
                     <small>From the tuning to the technical capabilities, the Monarch was designed to bring out the best that In-Ear Monitors can offer.<br></small>
-                    <a href="product-detail.html" class="btn">Buy Now &#8594;</a>
+                    <a href="product-detail.html?id=shuoer-s12" class="btn">Buy Now &#8594;</a>
                 </div>
             </div>
         </div>
@@ -302,6 +130,10 @@
         </div>
     </div>
 
+    <script src="products.js"></script>
+    <script src="product-store.js"></script>
+    <script src="products-list.js"></script>
+    <script src="cart.js"></script>
     <script>
         var MenuItems = document.getElementById("MenuItems");
 

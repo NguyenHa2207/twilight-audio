@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Management - Twilight Audio</title><link rel="stylesheet" href="style.css">
+  <style>
+    .admin-wrap{max-width:1180px;margin:35px auto;padding:0 18px}.admin-head{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:22px}.admin-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(320px,1fr);gap:24px;align-items:start}.admin-panel{background:#fff;padding:22px;border:1px solid #e5e5e5;border-radius:8px;box-shadow:0 2px 12px #00000008}.admin-panel h2{margin-bottom:16px}.admin-form label{display:block;font-weight:600;font-size:14px;margin:12px 0 5px}.admin-form input,.admin-form textarea,.admin-form select{width:100%;padding:10px;border:1px solid #ccc;border-radius:4px;font:inherit}.admin-form textarea{min-height:76px;resize:vertical}.admin-form .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.admin-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.admin-btn{border:0;border-radius:4px;padding:10px 16px;cursor:pointer;font:inherit;background:#ff523b;color:#fff}.admin-btn.secondary{background:#555}.admin-btn.danger{background:#a82222}.admin-help{font-size:13px;color:#666;line-height:1.5}.admin-product{display:grid;grid-template-columns:76px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #eee}.admin-product img{width:76px;height:76px;object-fit:contain;background:#fafafa}.admin-product h3{font-size:16px;margin:0 0 5px}.admin-product p{font-size:13px;color:#666;margin:0}.admin-product-actions{display:flex;gap:6px;flex-direction:column}.admin-product-actions button{padding:7px 10px;font-size:13px}.admin-status{margin:12px 0;color:#18723b;min-height:20px}.admin-empty{color:#777;padding:20px 0}.admin-preview{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.admin-preview img{width:60px;height:60px;object-fit:contain;border:1px solid #ddd}.admin-toplink{color:#ff523b;text-decoration:underline}@media(max-width:800px){.admin-grid{grid-template-columns:1fr}.admin-form .two{grid-template-columns:1fr}.admin-product{grid-template-columns:60px 1fr}.admin-product img{width:60px;height:60px}.admin-product-actions{grid-column:2;flex-direction:row}}
+  </style>
+</head>
+<body>
+  <div class="container"><div class="navbar"><div class="logo"><a href="index.html"><img src="images/Logo.png" width="175" alt="Twilight Audio"></a></div><nav><ul><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li><a href="admin-products.html">Product Management</a></li></ul></nav><a href="products.html">Visit Store</a></div></div>
+  <main class="admin-wrap">
+    <div class="admin-head"><div><h1>Product Management</h1><p class="admin-help">Add, edit, and delete products. Product data is stored in SQLite; uploaded images are saved in the uploads/ folder.</p></div><div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><a class="admin-toplink" href="products.html">View Storefront →</a><button class="admin-btn secondary" id="logout-button" type="button">Sign Out</button></div></div>
+    <p id="admin-status" class="admin-status" role="status"></p>
+    <div class="admin-grid">
+      <section class="admin-panel"><h2 id="form-heading">Add New Product</h2>
+        <form id="product-form" class="admin-form">
+          <input type="hidden" id="edit-id">
+          <div class="two"><div><label for="name">Product Name *</label><input id="name" required maxlength="120"></div><div><label for="brand">Brand</label><input id="brand"></div></div>
+          <div class="two"><div><label for="price">Price *</label><input id="price" type="number" min="0" step="0.01" required></div><div><label for="currency">Currency</label><select id="currency"><option value="USD">USD ($)</option><option value="VND">VND (₫)</option><option value="EUR">EUR (€)</option><option value="GBP">GBP (£)</option></select></div></div>
+          <div class="two"><div><label for="old-price">Original Price (optional)</label><input id="old-price" type="number" min="0" step="0.01"></div><div><label for="category">Category</label><input id="category" value="IEM"></div></div>
+          <label for="subtitle">Subtitle</label><input id="subtitle">
+          <label for="short-description">Short Description</label><textarea id="short-description"></textarea>
+          <label for="colors">Colors (one per line)</label><textarea id="colors" placeholder="Black&#10;Silver&#10;Blue"></textarea>
+          <label for="image-urls">Image URLs (one per line)</label><textarea id="image-urls" placeholder="images/product-1.jpg&#10;images/gallery-1.jpg"></textarea>
+          <label for="image-files">Or upload images from your computer (multiple images allowed)</label><input id="image-files" type="file" accept="image/*" multiple><p class="admin-help">Uploaded images are saved in the uploads/ folder on this computer. Use reasonably sized JPG/WebP images; maximum 12 MB per image.</p><div id="image-preview" class="admin-preview"></div>
+          <label for="features">Key Features (one per line)</label><textarea id="features" placeholder="Driver planar 14.8mm&#10;Detachable cable"></textarea>
+          <label for="specifications">Specifications (one per line, in Name: Value format)</label><textarea id="specifications" placeholder="Driver: Planar Magnetic&#10;Connection: Wired"></textarea>
+          <label for="description">Detailed Description (one per line, in Title: Content format)</label><textarea id="description" placeholder="Design: Precision-machined aluminum shell&#10;Sound: ..."></textarea>
+          <div class="admin-actions"><button class="admin-btn" type="submit">Save Product</button><button class="admin-btn secondary" id="reset-form" type="button">Reset Form</button></div>
+        </form>
+      </section>
+      <section class="admin-panel"><h2>Product List <span id="product-count"></span></h2><input id="search-products" type="search" placeholder="Search by name or brand..." style="width:100%;padding:10px;border:1px solid #ccc;border-radius:4px;margin-bottom:12px"><div id="admin-product-list"></div></section>
+    </div>
+  </main>
+  <script>
+    document.getElementById('logout-button').addEventListener('click', async () => {
+      try { await fetch('/api/auth/logout', {method:'POST'}); } finally { location.replace('/admin-login.html'); }
+    });
+  </script>
+  <script src="products.js"></script><script src="product-store.js"></script><script src="admin-products.js"></script>
+</body></html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login - Twilight Audio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="navbar">
+      <div class="logo"><a href="index.html"><img src="images/Logo.png" width="175" alt="Twilight Audio"></a></div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+        </ul>
+      </nav><a href="products.html">Visit Store</a>
+    </div>
+  </div>
+  <main class="login-wrap">
+    <section class="login-card">
+      <img class="login-logo" src="images/Logo.png" alt="Twilight Audio">
+      <h1>Admin Login</h1>
+      <p>Sign in to manage Twilight Audio products.</p>
+      <form id="login-form">
+        <label for="username">Username</label><input id="username" name="username" autocomplete="username" required
+          autofocus>
+        <label for="password">Password</label><input id="password" name="password" type="password"
+          autocomplete="current-password" required>
+        <p id="login-error" class="login-error" role="alert"></p>
+        <button type="submit" id="login-button">Sign In</button>
+      </form>
+      <a class="login-back" href="index.html">← Back to Store</a>
+    </section>
+  </main>
+  <script>
+    (() => {
+      const form = document.getElementById('login-form');
+      const error = document.getElementById('login-error');
+      const button = document.getElementById('login-button');
+      const params = new URLSearchParams(location.search);
+      const requested = params.get('next') || '/admin-products.html';
+      const next = requested.startsWith('/') && !requested.startsWith('//') && !requested.includes('\\') ? requested : '/admin-products.html';
+      fetch('/api/auth/status').then(r => r.json()).then(s => {if (s.authenticated) location.replace(next);}).catch(() => { });
+      form.addEventListener('submit', async event => {
+        event.preventDefault(); error.textContent = ''; button.disabled = true; button.textContent = 'Signing in…';
+        try {
+          const response = await fetch('/api/auth/login', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({username: document.getElementById('username').value, password: document.getElementById('password').value})});
+          const result = await response.json().catch(() => ({}));
+          if (!response.ok) throw new Error(result.error || 'Unable to sign in.');
+          location.replace(next);
+        } catch (e) {error.textContent = e.message || 'Could not connect to the server. Run npm start.';}
+        finally {button.disabled = false; button.textContent = 'Sign In';}
+      });
+    })();
+  </script>
+</body>
+
+</html>

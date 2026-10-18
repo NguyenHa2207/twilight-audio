@@ -105,13 +105,3 @@ The cart is stored in the current browser's `localStorage`, not in SQLite. It pe
 | `POST` | `/api/auth/login` | Sign in as admin |
 | `POST` | `/api/auth/logout` | Sign out |
 | `GET` | `/api/health` | Basic server health check |
-
-## Backups and GitHub
-
-Back up `twilight-audio.sqlite` and the `uploads/` directory together to preserve the catalogue and uploaded images. Keep local database files, generated credentials, and `node_modules/` out of GitHub; the included `.gitignore` excludes them.
-
-The server binds to `127.0.0.1` for local use. Do not expose this development setup directly to the public internet without adding production-grade security, deployment configuration, HTTPS, robust password management, and payment integration.
-
-## License
-
-Add a license file before distributing or reusing this project publicly. If this repository includes third-party assets, verify their licenses and attribution requirements before publishing.

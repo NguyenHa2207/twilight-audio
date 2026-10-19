@@ -4,6 +4,10 @@ A responsive audio-storefront project built with **HTML, CSS, JavaScript, Node.j
 
 > This is a local development/demo project. It does not currently process real payments or provide production-grade multi-user accounts.
 
+## Demo
+
+https://github.com/user-attachments/assets/c28472e9-5d7e-4eb5-951e-689acce3ea89
+
 ## Features
 
 - **Storefront:** homepage and product listing with sample audio products.
